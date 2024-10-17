@@ -2,11 +2,12 @@ import { useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import App from "../App";
 import context from "../Context/context";
+import { TelaCadastro } from "../Pages/Cadastro/Index";
 
 
 export const RoutesPage = () => {
     const [user, setUser] = useState({});
-    const [pontuacap, setPontuacao] = useState(0)
+    const [pontuacao, setPontuacao] = useState(0)
 
     // const ProtctedRoute = (props) => {
     //     return user.login ? props.children : <Navigate to="/" />;
@@ -17,11 +18,19 @@ export const RoutesPage = () => {
             <Routes>
                 <Route
                     element={
-                        <context.Provider value={{ setUser }}>
+                        <context.Provider>
                             <App />
                         </context.Provider>
                     }
                     path="/"
+                />
+                <Route
+                    element={
+                        <context.Provider value={{ setUser }}>
+                            <TelaCadastro />
+                        </context.Provider>
+                    }
+                    path="/Cadastro"
                 />
 
                 {/* Rotas não especificadas, encaminharão para a tela de login */}
