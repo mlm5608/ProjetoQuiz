@@ -19,10 +19,9 @@ export const TelaCadastro = () => {
 
   function initFunc(e) {
     e.preventDefault()
-    console.log(userNovo);
     CadastrarUsuario()
 
-    // navigate("/quiz")
+    navigate("/quiz")
   }
 
   function CadastrarUsuario() {
@@ -36,7 +35,7 @@ export const TelaCadastro = () => {
         salaAluno: userNovo.salaAluno,
       };
 
-      fetch(`http://localhost:3000/usuarios`, {
+      fetch(`http://localhost:3000/players`, {
         method: "POST",
         body: JSON.stringify(data),
       });

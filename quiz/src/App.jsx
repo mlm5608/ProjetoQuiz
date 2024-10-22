@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 function App() {
   const navigate  = useNavigate()
+  
   return (
     <div className="min-h-screen bg-primary-watergreen flex items-center justify-center gap-[120px] pt-[40px]" >
       <Header login={true}></Header>

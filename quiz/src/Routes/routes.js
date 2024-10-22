@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import App from "../App";
 import context from "../Context/context";
 import { TelaCadastro } from "../Pages/Cadastro/Index";
+import { PerguntasPage } from "../Pages/Perguntas/Index";
 
 
 export const RoutesPage = () => {
@@ -31,6 +32,14 @@ export const RoutesPage = () => {
                         </context.Provider>
                     }
                     path="/Cadastro"
+                />
+                <Route
+                    element={
+                        <context.Provider>
+                            <PerguntasPage />
+                        </context.Provider>
+                    }
+                    path="/quiz"
                 />
 
                 {/* Rotas não especificadas, encaminharão para a tela de login */}
