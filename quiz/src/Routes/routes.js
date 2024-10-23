@@ -35,7 +35,7 @@ export const RoutesPage = () => {
                 />
                 <Route
                     element={
-                        <context.Provider>
+                        <context.Provider value={{ setPontuacao }}>
                             <PerguntasPage />
                         </context.Provider>
                     }
