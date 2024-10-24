@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useTimer } from 'react-timer-hook';
 
-export function MyTimer({ expiryTimestamp, onExpire, indice}) {
+export function MyTimer({ expiryTimestamp, onExpire, indice, marked}) {
     const {
         seconds,
         restart,
@@ -28,6 +28,12 @@ export function MyTimer({ expiryTimestamp, onExpire, indice}) {
     useEffect(() => {
         restart(expiryTimestamp)
     }, [indice])
+
+    useEffect(() => {
+        if (marked != "") {
+            pause()
+        }
+    },[marked])
 
     return (
         <div className="relative rounded-3xl h-14 w-[400px] bg-primary-watergreen border border-black overflow-hidden mb-5">

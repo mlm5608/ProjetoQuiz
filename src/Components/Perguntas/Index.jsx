@@ -22,7 +22,7 @@ import p53 from "../../Assets/p53.png";
 import p54 from "../../Assets/p54.png";
 import { useState } from "react";
 
-export const Perguntas = ({ indice, terminar, proximaPerg, tempoResposta }) => {
+export const Perguntas = ({ indice, terminar, proximaPerg, tempoResposta, setMarked }) => {
   const perguntas = [
     {
       id: 1,
@@ -175,12 +175,15 @@ export const Perguntas = ({ indice, terminar, proximaPerg, tempoResposta }) => {
   function HandleClick(id) {
     setAltSel(id);
     setDisbled(true);
+    setMarked(id)
     console.log(tempoResposta); 
   }
+
 
   function proximaFim() {
     setAltSel("")
     setDisbled(false)
+    setMarked("")
   }
 
   return (

@@ -6,12 +6,13 @@ import { useNavigate } from "react-router-dom";
 
 export const PerguntasPage = () => {
   const [indicePergunta, setIndicePergunta] = useState(0);
+  const [markedQuestion, setMarkedQuestion] = useState("")
   const navigate = useNavigate()
 
-  // Configura o tempo do timer para 15 segundos
+
   const createTimer = () => {
     const time = new Date();
-    time.setSeconds(time.getSeconds() + 15); // 15 segundos de contagem regressiva
+    time.setSeconds(time.getSeconds() + 15); 
     return time;
   };
 
@@ -26,12 +27,14 @@ export const PerguntasPage = () => {
         expiryTimestamp={createTimer()}
         onExpire={() => alert("silas.. silascou")}
         indice={indicePergunta}
+        marked={markedQuestion}
       />
 
       <Perguntas
         indice={indicePergunta}
         terminar={() => navigate("/result")}
         proximaPerg={() =>  setIndicePergunta(indicePergunta + 1)}
+        setMarked={setMarkedQuestion}
       />
     </div>
   );
