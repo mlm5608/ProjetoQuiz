@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { MyTimer } from "../../Components/Timer/Index";
-import { Footer } from "../../Components/Footer";
 import { Header } from "../../Components/Header";
 import { Perguntas } from "../../Components/Perguntas/Index";
 import { useNavigate } from "react-router-dom";
@@ -20,10 +19,9 @@ export const PerguntasPage = () => {
   }, [indicePergunta])
 
   return (
-    <div className="min-h-screen bg-primary-watergreen flex flex-col items-center justify-center gap-[40px] pt-[40px]">
+    <div className="min-h-screen bg-primary-watergreen flex flex-col items-center justify-center pt-[40px]">
       <Header login={false} />
 
-      {/* O timer é exibido com 15 segundos inicialmente e pausado */}
       <MyTimer
         expiryTimestamp={createTimer()}
         onExpire={() => alert("silas.. silascou")}
@@ -35,8 +33,6 @@ export const PerguntasPage = () => {
         terminar={() => navigate("/result")}
         proximaPerg={() =>  setIndicePergunta(indicePergunta + 1)}
       />
-
-      <Footer />
     </div>
   );
 };

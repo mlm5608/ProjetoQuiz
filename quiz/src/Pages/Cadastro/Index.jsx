@@ -4,45 +4,33 @@ import { Footer } from "../../Components/Footer";
 import { Header } from "../../Components/Header";
 import { Input } from "../../Components/Input/Index";
 import { Title } from "../../Components/Title/Index";
-import { useState } from "react";
-import { v4 as uuid } from "uuid";
+import { useContext, useState } from "react";
+import context from "../../Context/context";
 
 export const TelaCadastro = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [userNovo, setUserNovo] = useState({
     nome: "",
     telefone: "",
     email: "",
     nomeAluno: "",
-    salaAluno: ""
-  })
+    salaAluno: "",
+  });
+
+  const { setUser } = useContext(context);
 
   function initFunc(e) {
-    e.preventDefault()
-    CadastrarUsuario()
+    e.preventDefault();
 
-    navigate("/quiz")
-  }
-
-  function CadastrarUsuario() {
-    try {
-      const data = {
-        userId: uuid(),
-        nome: userNovo.nome,
-        email: userNovo.email,
-        telefone: userNovo.telefone,
-        aluno: userNovo.nomeAluno,
-        salaAluno: userNovo.salaAluno,
-      };
-
-      fetch(`http://localhost:3000/players`, {
-        method: "POST",
-        body: JSON.stringify(data),
-      });
-
-
-    } catch (error) {
-      alert("Deu Merda")
+    if (
+      userNovo.nome != "" ||
+      userNovo.email != "" ||
+      userNovo.telefone != ""
+    ) {
+      setUser(userNovo);
+      navigate("/quiz");
+    } else {
+      alert("Informações básicas não foram preenchidas");
     }
   }
   return (
@@ -50,33 +38,52 @@ export const TelaCadastro = () => {
       <Header login={false}></Header>
 
       <Title>Cadastro</Title>
-      <form onSubmit={(e) => initFunc(e)} className="flex flex-col items-center justify-center gap-5 w-[80%]">
+      <form
+        onSubmit={(e) => initFunc(e)}
+        className="flex flex-col items-center justify-center gap-5 w-[80%]"
+      >
         <Input
           req={true}
           onChange={(e) => setUserNovo({ ...userNovo, nome: e.target.value })}
-        >Nome:</Input>
+        >
+          Nome:
+        </Input>
 
         <Input
           type="tel"
           req={true}
-          onChange={(e) => setUserNovo({ ...userNovo, telefone: e.target.value })}
-        >(ddd) telefone:</Input>
+          onChange={(e) =>
+            setUserNovo({ ...userNovo, telefone: e.target.value })
+          }
+        >
+          (ddd) telefone:
+        </Input>
 
         <Input
           type="email"
           req={true}
           onChange={(e) => setUserNovo({ ...userNovo, email: e.target.value })}
-        >Email:</Input>
+        >
+          Email:
+        </Input>
 
         <Input
-          onChange={(e) => setUserNovo({ ...userNovo, nomeAluno: e.target.value })}
-        >Aluno:</Input>
+          onChange={(e) =>
+            setUserNovo({ ...userNovo, nomeAluno: e.target.value })
+          }
+        >
+          Aluno:
+        </Input>
 
         <Input
-          onChange={(e) => setUserNovo({ ...userNovo, salaAluno: e.target.value })}
-        >Turma do Aluno</Input>
+          onChange={(e) =>
+            setUserNovo({ ...userNovo, salaAluno: e.target.value })
+          }
+        >
+          Turma do Aluno
+        </Input>
 
-        <Button style='bg-complementary-green w-[35%]'>Ready</Button>
+        <Button style="bg-complementary-green w-[35%]">Ready</Button>
       </form>
 
       <Footer></Footer>

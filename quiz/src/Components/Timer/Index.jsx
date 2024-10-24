@@ -4,7 +4,8 @@ import { useTimer } from 'react-timer-hook';
 export function MyTimer({ expiryTimestamp, onExpire, indice}) {
     const {
         seconds,
-        restart
+        restart,
+        pause
     } = useTimer({ expiryTimestamp, onExpire });
    
     const totalSeconds = 15;
@@ -29,11 +30,11 @@ export function MyTimer({ expiryTimestamp, onExpire, indice}) {
     }, [indice])
 
     return (
-        <div className="relative rounded-3xl h-14 w-[400px] bg-primary-watergreen border border-black overflow-hidden">
+        <div className="relative rounded-3xl h-14 w-[400px] bg-primary-watergreen border border-black overflow-hidden mb-5">
             <div
                 className="absolute top-0 left-0 h-full"
                 style={{
-                    width: `${getProgress()}%`,
+                    width:`${getProgress()}%`,
                     backgroundColor: getColor(),
                     transition: 'width 1s linear, background-color 0.5s ease',
                 }}

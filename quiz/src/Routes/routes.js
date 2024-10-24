@@ -4,6 +4,8 @@ import App from "../App";
 import context from "../Context/context";
 import { TelaCadastro } from "../Pages/Cadastro/Index";
 import { PerguntasPage } from "../Pages/Perguntas/Index";
+import { Resultado } from "../Pages/Resultado/Index";
+import { Ranking } from "../Pages/Rank/Index";
 
 
 export const RoutesPage = () => {
@@ -35,11 +37,27 @@ export const RoutesPage = () => {
                 />
                 <Route
                     element={
-                        <context.Provider value={{ setPontuacao }}>
+                        <context.Provider value={{ setPontuacao, user }}>
                             <PerguntasPage />
                         </context.Provider>
                     }
                     path="/quiz"
+                />
+                <Route
+                    element={
+                        <context.Provider value={{ pontuacao, setUser }}>
+                            <Resultado />
+                        </context.Provider>
+                    }
+                    path="/result"
+                />
+                <Route
+                    element={
+                        <context.Provider>
+                            <Ranking />
+                        </context.Provider>
+                    }
+                    path="/rank"
                 />
 
                 {/* Rotas não especificadas, encaminharão para a tela de login */}
