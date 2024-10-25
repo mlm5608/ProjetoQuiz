@@ -9,8 +9,7 @@ import { Ranking } from "../Pages/Rank/Index";
 
 
 export const RoutesPage = () => {
-    const [user, setUser] = useState({});
-    const [pontuacao, setPontuacao] = useState(0)
+    const [user, setUser] = useState("");
 
     // const ProtctedRoute = (props) => {
     //     return user.login ? props.children : <Navigate to="/" />;
@@ -21,9 +20,7 @@ export const RoutesPage = () => {
             <Routes>
                 <Route
                     element={
-                        <context.Provider>
-                            <App />
-                        </context.Provider>
+                        <App />
                     }
                     path="/"
                 />
@@ -37,7 +34,7 @@ export const RoutesPage = () => {
                 />
                 <Route
                     element={
-                        <context.Provider value={{ setPontuacao, user }}>
+                        <context.Provider value={{ user }}>
                             <PerguntasPage />
                         </context.Provider>
                     }
@@ -45,7 +42,7 @@ export const RoutesPage = () => {
                 />
                 <Route
                     element={
-                        <context.Provider value={{ pontuacao, setUser }}>
+                        <context.Provider value={{ user, setUser }}>
                             <Resultado />
                         </context.Provider>
                     }

@@ -7,6 +7,7 @@ export const Input = (props) => {
       id="input"
       aria-required={props.req}
       onChange={(e) => props.onChange(e)} // Passar o evento completo
+      autoComplete="off"
     />
   );
 };

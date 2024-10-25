@@ -1,4 +1,14 @@
 {
   "players": [
-  ]
+    {
+      "id": "0956",
+      "userId": "be3f3e40-00e0-4ed6-bca4-53f380eb33bd",
+      "nome": "Vanessa",
+      "email": "van@email.com",
+      "telefone": "971022979",
+      "aluno": "",
+      "salaAluno": ""
+    }
+  ],
+  "Partida": []
 }

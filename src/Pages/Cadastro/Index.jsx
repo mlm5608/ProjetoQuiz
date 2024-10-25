@@ -6,6 +6,7 @@ import { Input } from "../../Components/Input/Index";
 import { Title } from "../../Components/Title/Index";
 import { useContext, useState } from "react";
 import context from "../../Context/context";
+import {v4 as uuid} from "uuid"
 
 export const TelaCadastro = () => {
   const navigate = useNavigate();
@@ -19,29 +20,45 @@ export const TelaCadastro = () => {
 
   const { setUser } = useContext(context);
 
-  function initFunc(e) {
-    e.preventDefault();
-
+  async function initFunc() {
     if (
       userNovo.nome != "" ||
       userNovo.email != "" ||
       userNovo.telefone != ""
     ) {
-      setUser(userNovo);
+      const data = {
+        userId: uuid(),
+        nome: userNovo.nome,
+        email: userNovo.email,
+        telefone: userNovo.telefone,
+        aluno: userNovo.nomeAluno,
+        salaAluno: userNovo.salaAluno,
+      };
+      await CadastrarUsuario(data)
+      setUser(data.id);
       navigate("/quiz");
     } else {
       alert("Informações básicas não foram preenchidas");
     }
   }
+
+  const CadastrarUsuario = (data) => {
+    try {
+      fetch(`http://localhost:3000/players`, {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+      
+    } catch {
+      console.log("erro ao cadastrar");
+    }
+  };
   return (
     <div className="min-h-screen bg-primary-watergreen flex flex-col items-center justify-center gap-[45px] pt-[40px]">
       <Header login={false}></Header>
 
       <Title>Cadastro</Title>
-      <form
-        onSubmit={(e) => initFunc(e)}
-        className="flex flex-col items-center justify-center gap-5 w-[80%]"
-      >
+      <div className="flex flex-col items-center justify-center gap-5 w-[80%]">
         <Input
           req={true}
           onChange={(e) => setUserNovo({ ...userNovo, nome: e.target.value })}
@@ -83,8 +100,8 @@ export const TelaCadastro = () => {
           Turma do Aluno
         </Input>
 
-        <Button style="bg-complementary-green w-[35%]">Ready</Button>
-      </form>
+        <Button style="bg-complementary-green w-[35%]" onClick={() => initFunc()}>Ready</Button>
+      </div>
 
       <Footer></Footer>
     </div>
