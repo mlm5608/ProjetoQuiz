@@ -12,19 +12,28 @@ export const Resultado = ({}) => {
 
   useEffect(() => {
     console.log(user);
+    try {
+      fetch(`http://localhost:3000/Partida?idUsuario=${user}`)
+      .then((response) => response.json())
+      .then((response) => {
+        setPontos(response[0].pontos);
+      })
+    } catch (error) {
+      console.log("Erro ao buscar a pontuação");
+      console.log(error);
+    }
+  }, []);
+
+  useEffect(() => {
   }, [pontos]);
 
   function limparDados() {
     setUser("");
-    console.log(user);
   }
 
   return (
     <div className="min-h-screen bg-primary-watergreen flex flex-col items-center justify-center gap-5">
       <Header login={false} />
-
-      {pontos != null ? (
-        <>
           <h1 className="font-tit text-3xl text-complementary-green">
             Parabéns! Você fez:{" "}
           </h1>
@@ -51,11 +60,6 @@ export const Resultado = ({}) => {
           >
             Ver Placar de líderes
           </Button>
-        </>
-      ) : (
-        <></>
-      )}
-
       <Footer></Footer>
     </div>
   );

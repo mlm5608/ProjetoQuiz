@@ -24,6 +24,7 @@ import p52 from "../../Assets/p52.png";
 import p53 from "../../Assets/p53.png";
 import p54 from "../../Assets/p54.png";
 import context from "../../Context/context";
+import { v4 as uuid } from "uuid" 
 
 export const PerguntasPage = () => {
   const perguntas = [
@@ -231,7 +232,21 @@ export const PerguntasPage = () => {
   };
 
   function handleEnd() {
-    console.log(pontos);
+    const data = {
+      id: uuid(),
+      idUsuario: user,
+      pontos: pontos
+    }
+    try {
+      fetch('http://localhost:3000/Partida',{
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+    } catch (error) {
+      console.log("Erro ao salvar a pontuação");
+      console.log(error);
+    }
+    navigate("/result")
   }
 
   function CalcPoints(tempo, alternativa) {

@@ -14,7 +14,7 @@ module.exports = {
           darkblue: "#002F6C"
         },
         complementary: {
-          green: "#31727A",
+          green: "#466C9C",
         }
       }
     },

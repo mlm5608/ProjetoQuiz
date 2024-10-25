@@ -1,14 +1,34 @@
 {
   "players": [
     {
-      "id": "0956",
-      "userId": "be3f3e40-00e0-4ed6-bca4-53f380eb33bd",
-      "nome": "Vanessa",
-      "email": "van@email.com",
-      "telefone": "971022979",
+      "id": "992f",
+      "userId": "f27ed47f-c8d6-41e6-94c6-81c5116cb0d1",
+      "nome": "carlos",
+      "email": "carlos@email.com",
+      "telefone": "11987879090",
+      "aluno": "",
+      "salaAluno": ""
+    },
+    {
+      "id": "adad",
+      "userId": "60a6208a-9cd7-480b-a84e-116f551cd5f3",
+      "nome": "Joao",
+      "email": "jos@email.com",
+      "telefone": "11967875779",
       "aluno": "",
       "salaAluno": ""
     }
   ],
-  "Partida": []
+  "Partida": [
+    {
+      "id": "cc3632cd-6d6f-4ba0-969e-33e5205e7e58",
+      "idUsuario": "f27ed47f-c8d6-41e6-94c6-81c5116cb0d1",
+      "pontos": 1860
+    },
+    {
+      "id": "716b5fec-c801-4882-85f8-2a1af1aba3db",
+      "idUsuario": "60a6208a-9cd7-480b-a84e-116f551cd5f3",
+      "pontos": 1860
+    }
+  ]
 }

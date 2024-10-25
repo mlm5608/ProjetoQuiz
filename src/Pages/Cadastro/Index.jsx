@@ -35,7 +35,7 @@ export const TelaCadastro = () => {
         salaAluno: userNovo.salaAluno,
       };
       await CadastrarUsuario(data)
-      setUser(data.id);
+      setUser(data.userId);
       navigate("/quiz");
     } else {
       alert("Informações básicas não foram preenchidas");
@@ -52,6 +52,7 @@ export const TelaCadastro = () => {
     } catch {
       console.log("erro ao cadastrar");
     }
+    navigate("/result");
   };
   return (
     <div className="min-h-screen bg-primary-watergreen flex flex-col items-center justify-center gap-[45px] pt-[40px]">
