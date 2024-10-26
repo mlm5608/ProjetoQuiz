@@ -13,3 +13,11 @@ export const ButtonPerguntas = (props) => {
         </button>
     )
 }
+
+export const ButtonRank = (props) => {
+    return(
+        <button className={`h-12 rounded-lg text-white font-tit font-bold text-center text-xl ${props.style}`} onClick={props.onClick}>
+            {props.children}
+        </button>
+    )
+}

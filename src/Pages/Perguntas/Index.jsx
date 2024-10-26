@@ -48,7 +48,12 @@ export const PerguntasPage = () => {
           imagem: p14,
           certa: false,
         },
-        { id: "D", texto: "Vender produtos", imagem: p13, certa: false },
+        { 
+          id: "D", 
+          texto: "Vender produtos", 
+          imagem: p13, 
+          certa: false 
+        },
         {
           id: "C",
           texto: "Mostrar fotos de férias",
@@ -159,7 +164,7 @@ export const PerguntasPage = () => {
         },
         {
           id: "C",
-          texto: "A divulgação de dados estatísticos e fontes confiáveis",
+          texto: "A divulgação de dados e fontes confiáveis",
           imagem: p53,
           certa: true,
         },
@@ -185,11 +190,8 @@ export const PerguntasPage = () => {
   const [isPaused, setIsPaused] = useState(true);
   const [selectedTime, setSelectedTime] = useState(15);
   const [pontos, setPonto] = useState(0);
-
   const navigate = useNavigate();
-
   const { user } = useContext(context);
-
   const getColor = () => {
     if (selectedTime > 10) {
       return "gold";
@@ -207,7 +209,7 @@ export const PerguntasPage = () => {
 
   const Renderer = ({ seconds }) => {
     return (
-      <p className="relative ml-[240px] mt-3 font-tit text-2xl ">{seconds}</p>
+      <p className="relative ml-[240px] w-52 mt-3 font-tit text-2xl ">{seconds} Segundos</p>
     );
   };
 
@@ -263,13 +265,18 @@ export const PerguntasPage = () => {
     }
   }
 
+  function timerExpirado() {
+    alert("Tempo esgotado!")
+    handleNextQuestion()
+  }
+
   useEffect(() => {
     setSelectedTime(15);
     setIsPaused(false);
   }, [indice]);
 
   return (
-    <div className="min-h-screen bg-primary-watergreen flex flex-col items-center justify-center pt-[40px]">
+    <div className="min-h-screen bg-primary-watergreen flex flex-col items-center justify-center pt-[40px] overflow-visible">
       <Header login={false} />
 
       <div className="relative rounded-3xl h-14 w-[400px] bg-primary-watergreen border border-black overflow-hidden mb-5">
@@ -284,7 +291,7 @@ export const PerguntasPage = () => {
           <Countdown
             key={indice}
             date={Date.now() + selectedTime * 1000}
-            onComplete={() => (isPaused ? null : alert("Tempo esgotado!"))} //Fazer ternário para se pausado não alertar nada, caso contrário passar para a próximo pergunta.
+            onComplete={() => (isPaused ? null : timerExpirado())} //Fazer ternário para se pausado não alertar nada, caso contrário passar para a próximo pergunta.
             renderer={() => <Renderer seconds={selectedTime} />}
             paused={isPaused}
             onTick={({ seconds }) => {

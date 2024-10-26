@@ -3,15 +3,13 @@ import { Button } from "../../Components/Button/Index";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import context from "../../Context/context";
-import { Footer } from "../../Components/Footer";
 
-export const Resultado = ({}) => {
+export const Resultado = () => {
   const navigate = useNavigate();
   const { user, setUser } = useContext(context);
   const [pontos, setPontos] = useState(null);
 
   useEffect(() => {
-    console.log(user);
     try {
       fetch(`http://localhost:3000/Partida?idUsuario=${user}`)
       .then((response) => response.json())
@@ -60,7 +58,6 @@ export const Resultado = ({}) => {
           >
             Ver Placar de líderes
           </Button>
-      <Footer></Footer>
     </div>
   );
 };

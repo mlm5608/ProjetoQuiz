@@ -15,7 +15,7 @@ function App() {
 
       <div className="flex flex-col h-[400px] justify-around">
         <Button style='bg-primary-blue w-[335px]' onClick={() => navigate("/Cadastro")}>Jogar</Button>
-        <Button style='bg-primary-blue w-[335px]'>Ver placar de líderes</Button>
+        <Button style='bg-primary-blue w-[335px]' onClick={() => navigate("/rank")}>Ver placar de líderes</Button>
       </div>
 
       <Footer></Footer>

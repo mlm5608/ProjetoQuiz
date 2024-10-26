@@ -13,11 +13,11 @@ export const Perguntas = ({
   
   return (
     <div className="flex flex-col items-center justify-center -mb-4">
-      <TitleQuestion style={"mr-[500px]"}>
+      <TitleQuestion style={"w-[670px]"}>
         Pergunta {perguntas[indice].numeroPergunta}
       </TitleQuestion>
 
-      <TitleQuestion style={"w-[600px]"}>
+      <TitleQuestion style={"w-[670px]"}>
         {perguntas[indice].texto}
       </TitleQuestion>
 
@@ -27,8 +27,8 @@ export const Perguntas = ({
             <button
               key={alt.id}
               className={`flex flex-col gap-3 border-4 ${
-                marked != ""
-                  ? marked == alt.id
+                marked !== ""
+                  ? marked === alt.id
                     ? marked === perguntas[indice].altCerta
                       ? "border-green-500"
                       : "border-red-600"
@@ -41,7 +41,7 @@ export const Perguntas = ({
               <img
                 src={alt.imagem}
                 alt="imagem da alternativa"
-                className="w-[300px] h-[140px]"
+                className="w-[400px] h-[160px]"
               />
 
               <p className="text-sm font-tit self-start text-complementary-green">

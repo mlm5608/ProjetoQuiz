@@ -11,9 +11,9 @@ import { Ranking } from "../Pages/Rank/Index";
 export const RoutesPage = () => {
     const [user, setUser] = useState("");
 
-    // const ProtctedRoute = (props) => {
-    //     return user.login ? props.children : <Navigate to="/" />;
-    // };
+    const ProtctedRoute = (props) => {
+        return user !== "" ? props.children : <Navigate to="/" />;
+    };
 
     return (
         <BrowserRouter>
@@ -34,17 +34,21 @@ export const RoutesPage = () => {
                 />
                 <Route
                     element={
-                        <context.Provider value={{ user }}>
-                            <PerguntasPage />
-                        </context.Provider>
+                        <ProtctedRoute>
+                            <context.Provider value={{ user }}>
+                                <PerguntasPage />
+                            </context.Provider>
+                        </ProtctedRoute>
                     }
                     path="/quiz"
                 />
                 <Route
                     element={
-                        <context.Provider value={{ user, setUser }}>
-                            <Resultado />
-                        </context.Provider>
+                        <ProtctedRoute>
+                            <context.Provider value={{ user, setUser }}>
+                                <Resultado />
+                            </context.Provider>
+                        </ProtctedRoute>
                     }
                     path="/result"
                 />

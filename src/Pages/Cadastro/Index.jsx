@@ -22,9 +22,9 @@ export const TelaCadastro = () => {
 
   async function initFunc() {
     if (
-      userNovo.nome != "" ||
-      userNovo.email != "" ||
-      userNovo.telefone != ""
+      userNovo.nome !== "" ||
+      userNovo.email !== "" ||
+      userNovo.telefone !== ""
     ) {
       const data = {
         userId: uuid(),
@@ -48,9 +48,9 @@ export const TelaCadastro = () => {
         method: "POST",
         body: JSON.stringify(data),
       });
-      
-    } catch {
+    } catch(error) {
       console.log("erro ao cadastrar");
+      console.log(error);
     }
     navigate("/result");
   };

@@ -1,4 +1,4 @@
-import logoEtip from "../../Assets/logoetip.png"
+import logoEtip from "../../Assets/LogoEtip.png"
 import logoQuiz from "../../Assets/QuizB.png"
 
 export const Header = (props) => {
